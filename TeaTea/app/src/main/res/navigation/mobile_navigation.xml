@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.teatea.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_cart"
+        android:name="com.example.teatea.ui.cart.CartFragment"
+        android:label="Cart"
+        tools:layout="@layout/fragment_cart" />
+
+    <fragment
+        android:id="@+id/nav_history"
+        android:name="com.example.teatea.ui.history.HistoryFragment"
+        android:label="Orders"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.teatea.ui.profile.ProfileFragment"
+        android:label="Profile Settings"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

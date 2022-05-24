@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/milkteapic_prod"
+            android:layout_width="130dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/bubble_tea_pic" />
+
+        <LinearLayout
+            android:layout_width="193dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/milk_name_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello Tea"
+                android:textSize="22dp" />
+
+            <TextView
+                android:id="@+id/milk_desc_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The Milk has Good Aftertste" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="S - " />
+
+                <TextView
+                    android:id="@+id/milk_size_s_product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="65.00" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PHP" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M - " />
+
+                <TextView
+                    android:id="@+id/milk_size_m_product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="70.00" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PHP" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="L - " />
+
+                <TextView
+                    android:id="@+id/milk_size_l_product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="75.00" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PHP" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
+            <ImageButton
+                android:id="@+id/delete_productFromShop"
+                android:layout_width="65dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_baseline_delete_24" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_height="0.5dp"
+        android:layout_width="match_parent"
+        android:background="@color/black">
+    </LinearLayout>
+</LinearLayout>

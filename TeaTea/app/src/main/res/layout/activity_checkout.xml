@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CheckoutActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:orientation="horizontal">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listCheckout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/purple_200"
+        android:orientation="vertical">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="366dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="TOTAL: 500000.00"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="Payment Options:"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/cash_on_delivery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Cash On Delivery"
+                android:textSize="12dp" />
+
+            <RadioButton
+                android:id="@+id/electronic_pay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Eletronic Payment"
+                android:textSize="12dp" />
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="147dp"
+            android:orientation="vertical"
+            android:id="@+id/cardFieldCheckout">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/cardNum"
+                    android:layout_width="103dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Card Number"
+                    android:textColor="@color/black"
+                    android:textSize="12dp" />
+
+                <EditText
+                    android:id="@+id/cardNumInput"
+                    android:layout_width="263dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="XXXX-XXXX-XXXX-XXXX"
+                    android:inputType="textPersonName" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/cardPin"
+                    android:layout_width="103dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="PIN"
+                    android:textColor="@color/black"
+                    android:textSize="10dp" />
+
+                <EditText
+                    android:id="@+id/cardPinInput"
+                    android:layout_width="124dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="XXXX"
+                    android:inputType="textPersonName" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/cardCvv"
+                    android:layout_width="103dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="CVV"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <EditText
+                    android:id="@+id/cardCvvInput"
+                    android:layout_width="187dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="XXXX"
+                    android:inputType="textPersonName" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="62dp"-->
+        <!--            android:orientation="vertical">-->
+
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:orientation="horizontal">-->
+
+        <!--                <CheckBox-->
+        <!--                    android:id="@+id/checkTerms"-->
+        <!--                    android:layout_width="30dp"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginLeft="8dp" />-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/termsClicker"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginLeft="5dp"-->
+        <!--                    android:onClick="onClick"-->
+        <!--                    android:text="I've read the Terms and Conditions of TeaTea Service Policy."-->
+        <!--                    android:textColor="@color/black"-->
+        <!--                    android:textSize="15dp"-->
+        <!--                    tools:ignore="OnClick" />-->
+
+        <!--            </LinearLayout>-->
+        <!--        </LinearLayout>-->
+
+        <Button
+            android:id="@+id/btn_checkout"
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:text="CheckOut" />
+
+    </LinearLayout>
+</LinearLayout>

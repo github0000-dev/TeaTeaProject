@@ -1,0 +1,159 @@
+{
+  "project_info": {
+    "project_number": "263123793792",
+    "firebase_url": "https://teatea-4d4fe-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "teatea-4d4fe",
+    "storage_bucket": "teatea-4d4fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:263123793792:android:0dc9b1d0d5a68ebf667365",
+        "android_client_info": {
+          "package_name": "com.example.teatea"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "263123793792-09ohefgobamjsmhn06tf59botk7h9p6m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.teatea",
+            "certificate_hash": "870c651b6338e9f2fa8398a79f02057f26cb079b"
+          }
+        },
+        {
+          "client_id": "263123793792-fkn7h1k2mmcpm5ojcd5fpkrtcpikjqja.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCLTHeJmXTGFZo6veu3nRCAQUHAYJjyfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "263123793792-fkn7h1k2mmcpm5ojcd5fpkrtcpikjqja.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:263123793792:android:517a383c104c94a1667365",
+        "android_client_info": {
+          "package_name": "com.example.teateaadmins"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "263123793792-84a7vc6ujj6r19n9snukvtub3ig0f6fc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.teateaadmins",
+            "certificate_hash": "870c651b6338e9f2fa8398a79f02057f26cb079b"
+          }
+        },
+        {
+          "client_id": "263123793792-fkn7h1k2mmcpm5ojcd5fpkrtcpikjqja.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCLTHeJmXTGFZo6veu3nRCAQUHAYJjyfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "263123793792-fkn7h1k2mmcpm5ojcd5fpkrtcpikjqja.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:263123793792:android:7ea83b297ef24cb5667365",
+        "android_client_info": {
+          "package_name": "com.example.teateadelivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "263123793792-j0b0q8vb3th1e957turblhplipfihtti.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.teateadelivery",
+            "certificate_hash": "870c651b6338e9f2fa8398a79f02057f26cb079b"
+          }
+        },
+        {
+          "client_id": "263123793792-fkn7h1k2mmcpm5ojcd5fpkrtcpikjqja.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCLTHeJmXTGFZo6veu3nRCAQUHAYJjyfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "263123793792-fkn7h1k2mmcpm5ojcd5fpkrtcpikjqja.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:263123793792:android:f89927ddae3cf6c2667365",
+        "android_client_info": {
+          "package_name": "com.example.teateashops"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "263123793792-uvcfd7jhnng45cleo3ipujkjloouohrm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.teateashops",
+            "certificate_hash": "870c651b6338e9f2fa8398a79f02057f26cb079b"
+          }
+        },
+        {
+          "client_id": "263123793792-fkn7h1k2mmcpm5ojcd5fpkrtcpikjqja.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCLTHeJmXTGFZo6veu3nRCAQUHAYJjyfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "263123793792-fkn7h1k2mmcpm5ojcd5fpkrtcpikjqja.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

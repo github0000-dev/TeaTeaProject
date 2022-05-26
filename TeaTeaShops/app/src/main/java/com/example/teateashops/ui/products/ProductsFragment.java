@@ -77,7 +77,7 @@ public class ProductsFragment extends Fragment {
                 ProductAdapter.DeleteItemClickListener listener;
                 list.clear();
                 for (i=0;i<snapshot.getChildrenCount()+1;i++) {
-                    if (snapshot.child(String.valueOf(i)).hasChildren() && !String.valueOf(shop_id).equals(String.valueOf(snapshot.child(String.valueOf(i)).child("shop_id").getValue()))) {
+                    if (snapshot.child(String.valueOf(i)).hasChildren() && String.valueOf(shop_id).equals(String.valueOf(snapshot.child(String.valueOf(i)).child("shop_id").getValue()))) {
                         String nameGetter = String.valueOf(snapshot.child(String.valueOf(i)).child("name").getValue());
                         String descGetter = String.valueOf(snapshot.child(String.valueOf(i)).child("description").getValue());
                         String priceSGetter = String.valueOf(snapshot.child(String.valueOf(i)).child("price_s").getValue());

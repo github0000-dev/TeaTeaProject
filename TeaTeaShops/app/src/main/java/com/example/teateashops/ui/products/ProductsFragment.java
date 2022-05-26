@@ -52,7 +52,7 @@ public class ProductsFragment extends Fragment {
         Button addButton = (Button) root.findViewById(R.id.addProductButton);
 
 
-        MainMenu main = new MainMenu();
+        MainMenu main = (MainMenu) getActivity();
         // Vendor vendor = main.getVendor();
         Shop shop = main.getShop();
 

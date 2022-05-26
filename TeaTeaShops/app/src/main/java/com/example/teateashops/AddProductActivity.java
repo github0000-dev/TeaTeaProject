@@ -51,7 +51,7 @@ public class AddProductActivity extends AppCompatActivity {
         MainMenu main = new MainMenu();
 //        Vendor vendor = main.getVendor();
 
-        int shop_id = main.getSessionId();
+//        int shop_id = main.getSessionId();
 
         Calendar c = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -69,8 +69,11 @@ public class AddProductActivity extends AppCompatActivity {
 
         Button btn_add = (Button) findViewById(R.id.addProductButton);
 
-//        Intent get_extra = getIntent();
-//        String shop_id = get_extra.getStringExtra("shop_id");
+        Intent get_extra = getIntent();
+        String shop_id = get_extra.getStringExtra("shop_id");
+
+
+        System.out.println("Shop Id: "+shop_id);
 
 
 
@@ -123,7 +126,7 @@ public class AddProductActivity extends AppCompatActivity {
 
 //                                    db.child(String.valueOf(i)).setValue(new MilkteaItem(prodNameGet,prodDescGet,prodPriceSGet,prodPriceMGet,prodPriceLGet,prodDateGet));
 //                                    db.child(String.valueOf(i)).child("shop_id").setValue(shop_id);
-                                    db.child(String.valueOf(i)).setValue(new MilkteaItem(prodNameGet,prodDescGet,prodPriceSGet,prodPriceMGet,prodPriceLGet,prodDateGet,shop_id));
+                                    db.child(String.valueOf(i)).setValue(new MilkteaItem(prodNameGet,prodDescGet,prodPriceSGet,prodPriceMGet,prodPriceLGet,prodDateGet,Integer.parseInt(shop_id)));
 
 //                                    Toast.makeText(getBaseContext(),"Product Added Successfully.",Toast.LENGTH_SHORT).show();
                                     Toast.makeText(getBaseContext(),"Added Product from Shop ID "+shop_id,Toast.LENGTH_SHORT).show();

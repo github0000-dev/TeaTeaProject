@@ -40,6 +40,7 @@ public class AddToCartActivity extends AppCompatActivity {
         int prodID = Integer.parseInt(itemDetails.getStringExtra("productid"));
         String custID = itemDetails.getStringExtra("custid");
         String prodName = itemDetails.getStringExtra("prodname");
+        String shopname = itemDetails.getStringExtra("shopname");
 
         Toast.makeText(getBaseContext(),"Product Name" + prodName,Toast.LENGTH_SHORT).show();
 

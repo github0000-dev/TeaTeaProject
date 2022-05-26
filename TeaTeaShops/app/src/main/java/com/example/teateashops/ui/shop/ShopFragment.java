@@ -31,6 +31,8 @@ public class ShopFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_shop, container, false);
 
+
+
         MainMenu main = (MainMenu) getActivity();
         Shop shop = main.getShop();
         Vendor vend = main.getVendor();

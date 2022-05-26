@@ -1,5 +1,7 @@
 package com.example.teatea.ui.cart;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -99,6 +101,23 @@ public class CartFragment extends Fragment {
                     public void onItemRemove(View v, int position) {
                         Toast.makeText(getActivity(),items.get(position).name +" deleted.",Toast.LENGTH_SHORT).show();
                         db.child(String.valueOf(position)).removeValue();
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        builder.setMessage("Are you sure to delete "+ items.get(position).name+ "?");
+                        builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                        builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                db.child(String.valueOf(position)).removeValue();
+                            }
+                        });
+                        builder.create();
+                        builder.show();
                     }
                 };
 

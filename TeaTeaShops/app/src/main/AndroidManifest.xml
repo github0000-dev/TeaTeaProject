@@ -15,9 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TeaTeaShops">
-        <activity android:name=".ui.products.ProductActivity"
+        <activity android:name=".DeactivatedPage"></activity>
+        <activity
+            android:name=".ui.products.ProductActivity"
             android:launchMode="singleInstance"
-            android:parentActivityName=".MainMenu"/>
+            android:parentActivityName=".MainMenu" />
         <activity android:name=".NotificationViewActivity" />
         <activity
             android:name=".AddProductActivity"

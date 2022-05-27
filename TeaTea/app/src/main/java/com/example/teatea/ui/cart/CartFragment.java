@@ -67,7 +67,7 @@ public class CartFragment extends Fragment {
 //
 //        listView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("Cart").child(cust.id);
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
 
 //      public Cart(int prod_id,int quantity,String teasize,double price,double totalprice,String name){
 //        this.prod_id = prod_id;
@@ -86,38 +86,39 @@ public class CartFragment extends Fragment {
                 if (!snapshot.exists()) {
                     Toast.makeText(getActivity(),"Cart is Empty!",Toast.LENGTH_SHORT).show();
                 }
-                for (i=0;i<snapshot.getChildrenCount()+1;i++) {
-                    if (snapshot.child(String.valueOf(i)).hasChildren()) {
-                        String name = String.valueOf(snapshot.child(String.valueOf(i)).child("name").getValue());
-                        String size = String.valueOf(snapshot.child(String.valueOf(i)).child("teasize").getValue());
-                        int quantity  = Integer.parseInt(String.valueOf(snapshot.child(String.valueOf(i)).child("quantity").getValue()));
-                        double price  = Double.parseDouble(String.valueOf(snapshot.child(String.valueOf(i)).child("price").getValue()));
-                        double totalprice = Double.parseDouble(String.valueOf(snapshot.child(String.valueOf(i)).child("totalprice").getValue()));
-                        items.add(new Cart(0,quantity,size,price,totalprice,name));
+                for (i=0;i<snapshot.child("Cart").child(cust.id).getChildrenCount()+1;i++) {
+                    if (snapshot.child("Cart").child(cust.id).child(String.valueOf(i)).hasChildren()) {
+                        String name = String.valueOf(snapshot.child("Cart").child(cust.id).child(String.valueOf(i)).child("name").getValue());
+                        String size = String.valueOf(snapshot.child("Cart").child(cust.id).child(String.valueOf(i)).child("teasize").getValue());
+                        int quantity  = Integer.parseInt(String.valueOf(snapshot.child("Cart").child(cust.id).child(String.valueOf(i)).child("quantity").getValue()));
+                        double price  = Double.parseDouble(String.valueOf(snapshot.child("Cart").child(cust.id).child(String.valueOf(i)).child("price").getValue()));
+                        double totalprice = Double.parseDouble(String.valueOf(snapshot.child("Cart").child(cust.id).child(String.valueOf(i)).child("totalprice").getValue()));
+                        String shop = String.valueOf(snapshot.child("Shops").child(String.valueOf(snapshot.child("Products").child(String.valueOf(i)).child("shop_id").getValue())).child("shop_name").getValue());
+                        items.add(new Cart(i,quantity,size,price,totalprice,name,shop));
                     }
                 }
                 CartAdapter.RecycleViewDeleteListener listener = new CartAdapter.RecycleViewDeleteListener() {
                     @Override
                     public void onItemRemove(View v, int position) {
                         Toast.makeText(getActivity(),items.get(position).name +" deleted.",Toast.LENGTH_SHORT).show();
-                        db.child(String.valueOf(position)).removeValue();
-
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                        builder.setMessage("Are you sure to delete "+ items.get(position).name+ "?");
-                        builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        });
-                        builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                db.child(String.valueOf(position)).removeValue();
-                            }
-                        });
-                        builder.create();
-                        builder.show();
+                        db.child("Cart").child(cust.id).child(String.valueOf(position)).removeValue();
+//
+//                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                        builder.setMessage("Are you sure to delete "+ items.get(position).name+ "?");
+//                        builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//
+//                            }
+//                        });
+//                        builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                db.child(String.valueOf(position)).removeValue();
+//                            }
+//                        });
+//                        builder.create();
+//                        builder.show();
                     }
                 };
 

@@ -2,7 +2,7 @@ package com.example.teatea;
 
 public class Cart {
     public int prod_id,quantity;
-    public String teasize,name;
+    public String teasize,name,shop;
     public double price,totalprice;
 
     public Cart(){}
@@ -22,13 +22,14 @@ public class Cart {
 //        this.totalprice = totalprice;
 //    }
 
-    public Cart(int prod_id,int quantity,String teasize,double price,double totalprice,String name){
+    public Cart(int prod_id,int quantity,String teasize,double price,double totalprice,String name,String shop){
         this.prod_id = prod_id;
         this.quantity = quantity;
         this.teasize = teasize;
         this.price = price;
         this.totalprice = totalprice;
         this.name = name;
+        this.shop = shop;
     }
 
     public Cart(int quantity,String teasize,double price,double totalprice,String name){

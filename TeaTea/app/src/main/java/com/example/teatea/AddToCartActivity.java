@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,7 +27,7 @@ import java.io.FileReader;
 
 public class AddToCartActivity extends AppCompatActivity {
 
-    private DatabaseReference db;
+    private DatabaseReference db,db1;
 
 
     @Override
@@ -41,8 +42,6 @@ public class AddToCartActivity extends AppCompatActivity {
         String custID = itemDetails.getStringExtra("custid");
         String prodName = itemDetails.getStringExtra("prodname");
         String shopname = itemDetails.getStringExtra("shopname");
-
-        Toast.makeText(getBaseContext(),"Product Name" + prodName,Toast.LENGTH_SHORT).show();
 
         TextView prodname = findViewById(R.id.prodName);
         TextView proddesc = findViewById(R.id.prodDesc);
@@ -123,6 +122,9 @@ public class AddToCartActivity extends AppCompatActivity {
             }
         });
 
+
+        db1 = FirebaseDatabase.getInstance().getReference().child("Cart").child(custID);
+
         db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -139,9 +141,7 @@ public class AddToCartActivity extends AppCompatActivity {
                 // quantity = Integer.parseInt(spinner_quantity.getSelectedItem().toString());
                 Log.d("Quantity",String.valueOf(quantity[0]));
 
-                db = FirebaseDatabase.getInstance().getReference().child("Cart");
 
-                DatabaseReference dbGetProd = FirebaseDatabase.getInstance().getReference().child("Products").child(String.valueOf(prodID));
                 if (size[0] == 1) {
                     price[0] = Double.parseDouble(priceSGetter);
                 } else if (size[0] == 2) {
@@ -150,7 +150,11 @@ public class AddToCartActivity extends AppCompatActivity {
                     price[0] = Double.parseDouble(priceLGetter);
                 }
 
+//                LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+//                priceTotal.setLayoutParams(layoutParams);
                 priceTotal.setText("TOTAL = " + price[0]*quantity[0] + " PHP");
+
+
 
                 Button btn_addcart = findViewById(R.id.button_addtocart);
                 btn_addcart.setOnClickListener(new View.OnClickListener() {
@@ -174,7 +178,7 @@ public class AddToCartActivity extends AppCompatActivity {
 
 //                        Toast.makeText(getBaseContext()," Size: "+ size[0] + "\n Sizer: "+ sizer + " \n Price: " + price[0] + "PHP \n Quantity: " + quantity[0] + "\n Customer ID: " + custID + "\n Product ID: " + prodID + "\n Total: " + price[0]*quantity[0] + " PHP" ,Toast.LENGTH_SHORT).show();
 
-                        db.addListenerForSingleValueEvent(new ValueEventListener() {
+                        db1.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 int i;
@@ -189,12 +193,45 @@ public class AddToCartActivity extends AppCompatActivity {
                                     price[0] = Double.parseDouble(priceLGetter);
                                     sizer = "L";
                                 }
-                                for (i=0;i<snapshot.child(custID).getChildrenCount()+1;i++) {
-                                    if (snapshot.child(custID).child(String.valueOf(i)).getChildrenCount() == 0 ) {
-                                        db.child(custID).child(String.valueOf(i)).setValue(new Cart(prodID,quantity[0],sizer,price[0],price[0]*quantity[0],prodName));
+                                int checkVal = 0;
+                                for (i=0;i<snapshot.getChildrenCount()*2;i++) {
+                                    if (snapshot.child(String.valueOf(i)).getChildrenCount() == 0 ) {
+                                        db.child(String.valueOf(i)).setValue(new Cart(prodID,quantity[0],sizer,price[0],price[0]*quantity[0],prodName));
                                         Toast.makeText(getBaseContext(),"Added to Cart!",Toast.LENGTH_SHORT).show();
                                         finish();
+                                        break;
+
+//                                        System.out.println(snapshot.getValue());
+//                                        Boolean thisis1 = (String.valueOf(snapshot.child(String.valueOf(i)).child("prod_id").getValue()).equals(String.valueOf(prodID)));
+//                                        Boolean thisis2 = (String.valueOf(snapshot.child(String.valueOf(i)).child("teasize").getValue()).equals(sizer));
+//                                        System.out.println(" Con 1: " + thisis1 + "\n Con 2:" + thisis2);
+//                                        if (!(String.valueOf(snapshot.child(String.valueOf(i)).child("prod_id").getValue()).equals(String.valueOf(prodID)) &&
+//                                                String.valueOf(snapshot.child(String.valueOf(i)).child("teasize").getValue()).equals(sizer) )) {
+//                                            db.child(String.valueOf(i)).setValue(new Cart(prodID,quantity[0],sizer,price[0],price[0]*quantity[0],prodName));
+//                                            Toast.makeText(getBaseContext(),"Added to Cart!",Toast.LENGTH_SHORT).show();
+//                                            finish();
+//                                            break;
+//                                        } else {
+//                                            double dbprice = 0; // Double.parseDouble(String.valueOf(snapshot.child(String.valueOf(i)).child("totalprice").getValue()));
+//                                            int dbquantity = 0; // Integer.parseInt(String.valueOf(snapshot.child(String.valueOf(i)).child("quantity").getValue()));
+//                                            FirebaseDatabase.getInstance().getReference().child("Cart").child(custID).child(String.valueOf(i)).child("quantity").setValue(dbquantity+Integer.parseInt(String.valueOf(quantity)));
+//                                            FirebaseDatabase.getInstance().getReference().child("Cart").child(custID).child(String.valueOf(i)).child("totalprice").setValue(dbprice+Double.parseDouble(String.valueOf(price[0]*quantity[0])));
+//                                            Toast.makeText(getBaseContext(),"Added to Cart!",Toast.LENGTH_SHORT).show();
+//                                            finish();
+//                                        }
+//                                        String teasizer = String.valueOf(snapshot.child("teasize").getValue());
+//                                        String prodid = String.valueOf(snapshot.child("prod_id").getValue());
+//                                        if (sizer.equals(teasizer) && prodid.equals(String.valueOf(prodID))) {
+//                                            checkVal = 1;
+//                                        }
+//                                        System.out.println(i+" "+ teasizer + " " + prodid);
+
                                     }
+//                                    if (checkVal == 1) {
+//                                        Toast.makeText(getBaseContext(),"Product Exists",Toast.LENGTH_SHORT).show();
+//                                    } else {
+//                                        Toast.makeText(getBaseContext(),"Product not Exists",Toast.LENGTH_SHORT).show();
+//                                    }
                                 }
 
                             }

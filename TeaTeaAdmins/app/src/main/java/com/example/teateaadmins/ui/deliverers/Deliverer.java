@@ -1,19 +1,19 @@
-package com.example.teateaadmins;
+package com.example.teateaadmins.ui.deliverers;
 
-public class Customer {
+public class Deliverer {
     public String name,address,email,number,username,password,id;
 
-    public Customer() {
+    public Deliverer() {
 
     }
 
-    public Customer(String name, String address, String id) {
+    public Deliverer(String name, String address, String id) {
         this.name = name;
         this.address = address;
         this.id = id;
     }
 
-    public Customer(String name, String address, String email, String number, String username, String password) {
+    public Deliverer(String name, String address, String email, String number, String username, String password) {
         this.name = name;
         this.address = address;
         this.email = email;
@@ -21,7 +21,7 @@ public class Customer {
         this.password = password;
         this.username = username;
     }
-    public Customer(String name, String address, String email, String number, String password) {
+    public Deliverer(String name, String address, String email, String number, String password) {
         this.name = name;
         this.address = address;
         this.email = email;
@@ -33,7 +33,7 @@ public class Customer {
         this.name = n;
     }
 
-    public String getCustID() {
+    public String getDelID() {
         return id;
     }
 }

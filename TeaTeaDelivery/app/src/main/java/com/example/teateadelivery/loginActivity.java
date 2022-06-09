@@ -86,14 +86,32 @@ public class loginActivity extends AppCompatActivity {
                                 for (i=0;i<snapshot.getChildrenCount()+1;i++) {
                                     String user = String.valueOf(snapshot.child(String.valueOf(i)).child("username").getValue());
                                     String pass = String.valueOf(snapshot.child(String.valueOf(i)).child("password").getValue());
+//                                    if (user.equals(userGet) && pass.equals(passGet)) {
+//                                        // session.username = userGet;
+//                                        Intent menuInt = new Intent(loginActivity.this, MainMenu.class);
+//                                        Toast.makeText(getBaseContext(), "Welcome " + snapshot.child(String.valueOf(i)).child("name").getValue() + ".", Toast.LENGTH_SHORT).show();
+//                                        menuInt.putExtra("username",user);
+//                                        menuInt.putExtra("sessionnum",String.valueOf(i));
+//                                        startActivity(menuInt);
+//                                        finish();
+//                                        return;
+//                                    }
+
                                     if (user.equals(userGet) && pass.equals(passGet)) {
                                         // session.username = userGet;
-                                        Intent menuInt = new Intent(loginActivity.this, MainMenu.class);
-                                        Toast.makeText(getBaseContext(), "Welcome " + snapshot.child(String.valueOf(i)).child("name").getValue() + ".", Toast.LENGTH_SHORT).show();
-                                        menuInt.putExtra("username",user);
-                                        menuInt.putExtra("sessionnum",String.valueOf(i));
-                                        startActivity(menuInt);
-                                        finish();
+                                        if (Boolean.parseBoolean(String.valueOf(snapshot.child(String.valueOf(i)).child("accepted").getValue())) == true) {
+                                            Intent menuInt = new Intent(loginActivity.this, MainMenu.class);
+                                            Toast.makeText(getBaseContext(), "Welcome " + snapshot.child(String.valueOf(i)).child("name").getValue() + ".", Toast.LENGTH_SHORT).show();
+                                            menuInt.putExtra("username",user);
+                                            menuInt.putExtra("sessionnum",String.valueOf(i));
+                                            startActivity(menuInt);
+                                            finish();
+                                        } else {
+                                            Intent menuInt = new Intent(loginActivity.this, DeactivatedPage.class);
+                                            Toast.makeText(getBaseContext(), "Welcome " + snapshot.child(String.valueOf(i)).child("name").getValue() + ".", Toast.LENGTH_SHORT).show();
+                                            startActivity(menuInt);
+                                            finish();
+                                        }
                                         return;
                                     }
                                 }

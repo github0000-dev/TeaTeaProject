@@ -125,6 +125,22 @@ public class CartFragment extends Fragment {
                 CartAdapter adapter = new CartAdapter(items,listener);
                 listView.setAdapter(adapter);
                 listView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+                checkoutbtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+//                        Intent intent_checkout = new Intent (getActivity(),CheckoutActivity.class);
+//                        startActivity(intent_checkout);
+
+                        if (!snapshot.exists()) {
+                            Toast.makeText(getActivity(),"Can't Checkout. Cart is Still Empty!",Toast.LENGTH_SHORT).show();
+                        } else {
+                            Intent intent_checkout = new Intent (getActivity(),CheckoutActivity.class);
+                            intent_checkout.putExtra("cust_id",cust.id);
+                            startActivity(intent_checkout);
+                        }
+                    }
+                });
             }
 
             @Override
@@ -133,13 +149,7 @@ public class CartFragment extends Fragment {
             }
         });
 
-        checkoutbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent_checkout = new Intent (getActivity(),CheckoutActivity.class);
-                startActivity(intent_checkout);
-            }
-        });
+
 
         return view;
 

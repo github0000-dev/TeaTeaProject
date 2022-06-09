@@ -75,8 +75,9 @@ public class ProductsFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ProductAdapter.DeleteItemClickListener listener;
+                ProductAdapter.ViewItemClickListener vlistener;
                 list.clear();
-                for (i=0;i<snapshot.getChildrenCount()+1;i++) {
+                for (i=0;i<snapshot.getChildrenCount()*2;i++) {
                     if (snapshot.child(String.valueOf(i)).hasChildren() && String.valueOf(shop_id).equals(String.valueOf(snapshot.child(String.valueOf(i)).child("shop_id").getValue()))) {
                         String nameGetter = String.valueOf(snapshot.child(String.valueOf(i)).child("name").getValue());
                         String descGetter = String.valueOf(snapshot.child(String.valueOf(i)).child("description").getValue());
@@ -86,9 +87,18 @@ public class ProductsFragment extends Fragment {
 //                        double priceSGetter = Double.parseDouble(String.valueOf(snapshot.child(String.valueOf(i)).child("price_s").getValue()));
 //                        double priceMGetter =  Double.parseDouble(String.valueOf(snapshot.child(String.valueOf(i)).child("price_m").getValue()));
 //                        double priceLGetter =  Double.parseDouble(String.valueOf(snapshot.child(String.valueOf(i)).child("price_l").getValue()));
-                        list.add(new MilkteaItem(nameGetter,descGetter,priceSGetter,priceMGetter,priceLGetter));
+                        list.add(new MilkteaItem(nameGetter,descGetter,priceSGetter,priceMGetter,priceLGetter,String.valueOf(i)));
+//                        public MilkteaItem (String name,String description,String price_s,String price_m,String price_l,String id)
                     }
                 }
+                vlistener = new ProductAdapter.ViewItemClickListener() {
+                    @Override
+                    public void onClick(View v, int position) {
+                        Intent intent_editProduct = new Intent(getActivity(),EditProductActivity.class);
+                        intent_editProduct.putExtra("prod_id",list.get(position).id);
+                        startActivity(intent_editProduct);
+                    }
+                };
                 listener = new ProductAdapter.DeleteItemClickListener() {
                     @Override
                     public void onItemRemove(View v, int position) {
@@ -123,7 +133,7 @@ public class ProductsFragment extends Fragment {
                         builder.show();
                     }
                 };
-                reclist.setAdapter(new ProductAdapter(list,listener));
+                reclist.setAdapter(new ProductAdapter(list,listener,vlistener));
                 reclist.setLayoutManager(new LinearLayoutManager(getContext()));
             }
 

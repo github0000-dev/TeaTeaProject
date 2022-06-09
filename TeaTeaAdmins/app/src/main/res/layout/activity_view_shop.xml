@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewShopActivity">
+
+
+    <TextView
+        android:id="@+id/viewName_viewCustomer3"
+        android:layout_width="182dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="Incharge Info"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.31" />
+
+    <TextView
+        android:id="@+id/textAccept_shop"
+        android:layout_width="243dp"
+        android:layout_height="36dp"
+        android:gravity="center"
+        android:text="Accept This User?"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.772" />
+
+    <TextView
+        android:id="@+id/viewAdd_viewStaff"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:text="Address"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.454" />
+
+    <TextView
+        android:id="@+id/viewContact_viewCustomer2"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="Contact"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.616" />
+
+    <TextView
+        android:id="@+id/viewAdd_viewCustomer2"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="Address"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.454" />
+
+    <TextView
+        android:id="@+id/viewContact_viewStaff"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:text="Contact"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.616" />
+
+    <TextView
+        android:id="@+id/viewName_viewCustomer2"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="Name"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.377" />
+
+    <TextView
+        android:id="@+id/viewEmail_viewStaff"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:text="Email"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.532" />
+
+    <TextView
+        android:id="@+id/viewName_viewStaff"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:text="Name"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.379" />
+
+    <TextView
+        android:id="@+id/viewEmail_viewCustomer2"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="Email"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.531" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="123dp"
+        android:layout_height="111dp"
+        android:background="@color/purple_200"
+        android:padding="2sp"
+        android:src="@drawable/ic_baseline_warehouse_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.083" />
+
+    <TextView
+        android:id="@+id/viewName_viewShop"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:gravity="center|center_vertical"
+        android:text="Name"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.06"
+        tools:gravity="center" />
+
+    <TextView
+        android:id="@+id/viewAdd_viewShop"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:gravity="center|center_vertical"
+        android:text="Address"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.12"
+        tools:gravity="center" />
+
+    <TextView
+        android:id="@+id/viewDesc_viewShop"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:gravity="center|center_vertical"
+        android:text="Description"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.178"
+        tools:gravity="center" />
+
+
+    <Button
+        android:id="@+id/btn_accept_shop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Accept"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.859" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

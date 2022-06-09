@@ -2,12 +2,14 @@ package com.example.teateashops;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,11 +19,20 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     private List<MilkteaItem> list;
     private DeleteItemClickListener listener;
+    private ViewItemClickListener vlistener;
 
     public ProductAdapter(List<MilkteaItem> list,DeleteItemClickListener listener) {
         this.list = list;
         this.listener = listener;
     }
+
+    public ProductAdapter(List<MilkteaItem> list,DeleteItemClickListener listener,ViewItemClickListener vlistener) {
+        this.list = list;
+        this.listener = listener;
+        this.vlistener = vlistener;
+    }
+
+
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -44,6 +55,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             desc_milk = (TextView) itemView.findViewById(R.id.milk_desc_product);
             name_milk = (TextView) itemView.findViewById(R.id.milk_name_product);
             image = itemView.findViewById(R.id.milkteapic_prod);
+
+            image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    System.out.println("I am Clicked to update");
+                    vlistener.onClick(v,getAdapterPosition());
+                }
+            });
 
             del_button = itemView.findViewById(R.id.delete_productFromShop);
 
@@ -96,5 +115,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     public interface DeleteItemClickListener {
         void onItemRemove(View v, int position);
+    }
+
+    public interface ViewItemClickListener {
+        void onClick(View v,int position);
     }
 }

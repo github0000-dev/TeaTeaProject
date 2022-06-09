@@ -1,7 +1,6 @@
 package com.example.teateaadmins.ui.home;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.teateaadmins.HomeAdapter;
-import com.example.teateaadmins.MainActivity;
-import com.example.teateaadmins.MainMenu;
 import com.example.teateaadmins.Notification;
 import com.example.teateaadmins.R;
-import com.example.teateaadmins.Customer;
-import com.example.teateaadmins.CustomerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

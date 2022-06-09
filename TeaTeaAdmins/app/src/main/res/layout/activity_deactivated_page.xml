@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.498" />
 
     <Button
-        android:id="@+id/logOutBtn_deactivated"
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LogOut"
@@ -43,5 +43,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.172"
-        app:srcCompat="@drawable/ic_baseline_handshake_24" />
+        app:srcCompat="@drawable/ic_baseline_delivery_dining_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>

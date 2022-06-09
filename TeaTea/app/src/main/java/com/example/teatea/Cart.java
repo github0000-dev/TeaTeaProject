@@ -39,4 +39,13 @@ public class Cart {
         this.totalprice = totalprice;
         this.name = name;
     }
+
+    public Cart(int prod_id, int quantity, String teasize, double price, double totalprice, String name) {
+        this.prod_id = prod_id;
+        this.quantity = quantity;
+        this.teasize = teasize;
+        this.price = price;
+        this.totalprice = totalprice;
+        this.name = name;
+    }
 }

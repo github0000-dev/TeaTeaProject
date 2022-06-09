@@ -13,6 +13,8 @@
 
         <ImageView
             android:id="@+id/milkteapic_prod"
+            android:clickable="true"
+            android:focusable="true"
             android:layout_width="130dp"
             android:layout_height="match_parent"
             android:src="@drawable/bubble_tea_pic" />

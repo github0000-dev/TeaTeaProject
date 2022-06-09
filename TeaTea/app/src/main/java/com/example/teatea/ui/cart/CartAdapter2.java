@@ -19,6 +19,7 @@ import java.util.List;
 
 public class CartAdapter2 extends RecyclerView.Adapter<CartAdapter2.ViewHolder> {
 
+
     private List<MilkteaItem> list;
     private DeleteClickerListener listener;
 

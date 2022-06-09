@@ -88,6 +88,7 @@ public class loginActivity extends AppCompatActivity {
                 String userGet = user.getText().toString().trim();
                 String passGet = pass.getText().toString().trim();
 
+
                 if (userGet.length()==0 || passGet.length()==0) {
                     statusCreds.setText("Please Fill the Form.");
                 } else {
@@ -96,24 +97,50 @@ public class loginActivity extends AppCompatActivity {
                             connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED)) {
                         Toast.makeText(getBaseContext(), "Please Connect to the Internet", Toast.LENGTH_SHORT).show();
                     } else {
-                        db.child("Admins").addValueEventListener(new ValueEventListener() {
+                        db.child("Staffs").addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                int val=0;
                                 for (i=0;i<snapshot.getChildrenCount()+1;i++) {
                                     String user = String.valueOf(snapshot.child(String.valueOf(i)).child("username").getValue());
                                     String pass = String.valueOf(snapshot.child(String.valueOf(i)).child("password").getValue());
+//                                    if (user.equals(userGet) && pass.equals(passGet)) {
+//                                        // session.username = userGet;
+//                                        Intent menuInt = new Intent(loginActivity.this, MainMenu.class);
+//                                        Toast.makeText(getBaseContext(), "Welcome " + snapshot.child(String.valueOf(i)).child("name").getValue() + ".", Toast.LENGTH_SHORT).show();
+//                                        menuInt.putExtra("username",user);
+//                                        menuInt.putExtra("sessionnum",String.valueOf(i));
+//                                        startActivity(menuInt);
+//                                        finish();
+//                                        return;
+//                                    }
+
                                     if (user.equals(userGet) && pass.equals(passGet)) {
                                         // session.username = userGet;
-                                        Intent menuInt = new Intent(loginActivity.this, MainMenu.class);
-                                        Toast.makeText(getBaseContext(), "Welcome " + snapshot.child(String.valueOf(i)).child("name").getValue() + ".", Toast.LENGTH_SHORT).show();
-                                        menuInt.putExtra("username",user);
-                                        menuInt.putExtra("sessionnum",String.valueOf(i));
-                                        startActivity(menuInt);
-                                        finish();
-                                        return;
+                                        System.out.println(snapshot.child(String.valueOf(i)).child("accepted").getValue());
+                                        String boolacc = String.valueOf(snapshot.child(String.valueOf(i)).child("accepted").getValue());
+                                        if (boolacc.equals("true")) {
+                                            val = 1;
+                                            Intent menuInt = new Intent(loginActivity.this, MainMenu.class);
+                                            Toast.makeText(getBaseContext(), "Welcome " + snapshot.child(String.valueOf(i)).child("name").getValue() + ".", Toast.LENGTH_SHORT).show();
+                                            menuInt.putExtra("username",user);
+                                            menuInt.putExtra("sessionnum",String.valueOf(i));
+                                            startActivity(menuInt);
+                                            finish();
+                                            break;
+                                        } else {
+                                            val = 1;
+                                            Intent menuInt = new Intent(loginActivity.this, DeactivatedPage.class);
+                                            Toast.makeText(getBaseContext(), "Welcome " + snapshot.child(String.valueOf(i)).child("name").getValue() + ".", Toast.LENGTH_SHORT).show();
+                                            startActivity(menuInt);
+                                            finish();
+                                            break;
+                                        }
                                     }
                                 }
-                                statusCreds.setText("Invalid Username or Password.");
+                                if (val == 0) {
+                                    statusCreds.setText("Invalid Username or Password.");
+                                }
                             }
 
                             @Override

@@ -16,8 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.teateaadmins.R;
-import com.example.teateaadmins.Customer;
-import com.example.teateaadmins.CustomerAdapter;
 import com.example.teateaadmins.ViewCustomerActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

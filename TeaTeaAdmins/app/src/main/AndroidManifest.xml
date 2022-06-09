@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TeaTeaAdmins">
-        <activity android:name=".ViewDelivererActivity"></activity>
+        <activity android:name=".ViewShopActivity"
+            android:launchMode="singleInstance"
+            android:parentActivityName=".MainMenu"></activity>
+        <activity android:name=".ViewDelivererActivity"
+            android:launchMode="singleInstance"
+            android:parentActivityName=".MainMenu" />
         <activity
             android:name=".ViewCustomerActivity"
             android:launchMode="singleInstance"

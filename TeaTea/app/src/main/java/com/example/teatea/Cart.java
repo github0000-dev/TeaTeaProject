@@ -22,6 +22,15 @@ public class Cart {
 //        this.totalprice = totalprice;
 //    }
 
+    public Cart(int prod_id,int quantity,String teasize,double price,double totalprice,String name){
+        this.prod_id = prod_id;
+        this.quantity = quantity;
+        this.teasize = teasize;
+        this.price = price;
+        this.totalprice = totalprice;
+        this.name = name;
+        this.shop = shop;
+    }
     public Cart(int prod_id,int quantity,String teasize,double price,double totalprice,String name,String shop){
         this.prod_id = prod_id;
         this.quantity = quantity;

@@ -28,9 +28,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
+
 import kotlinx.coroutines.MainCoroutineDispatcher;
 
 import static android.content.ContentValues.TAG;
+import static com.example.teateashops.DeactivatedPage.deactivatePage;
+import static com.example.teateashops.MainMenu.main_menu_act;
 
 public class loginActivity extends AppCompatActivity {
 
@@ -96,22 +100,36 @@ public class loginActivity extends AppCompatActivity {
                             connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED)) {
                         Toast.makeText(getBaseContext(), "Please Connect to the Internet", Toast.LENGTH_SHORT).show();
                     } else {
-                        db.child("Admins").addValueEventListener(new ValueEventListener() {
+                        db.child("Staffs").addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                Intent menuInt = new Intent(loginActivity.this, MainMenu.class);
+                                Intent deactInt = new Intent(loginActivity.this,DeactivatedPage.class);
                                 for (i=0;i<snapshot.getChildrenCount()+1;i++) {
                                     String user = String.valueOf(snapshot.child(String.valueOf(i)).child("username").getValue());
                                     String pass = String.valueOf(snapshot.child(String.valueOf(i)).child("password").getValue());
                                     if (user.equals(userGet) && pass.equals(passGet)) {
                                         // session.username = userGet;
-                                        Intent menuInt = new Intent(loginActivity.this, MainMenu.class);
-                                        Toast.makeText(getBaseContext(), "Welcome " + snapshot.child(String.valueOf(i)).child("name").getValue() + ".", Toast.LENGTH_SHORT).show();
-                                        menuInt.putExtra("username",user);
-                                        menuInt.putExtra("sessionnum",String.valueOf(i));
-                                        startActivity(menuInt);
-                                        finish();
+//
+                                        if (String.valueOf(snapshot.child(String.valueOf(i)).child("accepted").getValue()).equals("true")) {
+                                            Toast.makeText(getBaseContext(), "Welcome " + snapshot.child(String.valueOf(i)).child("name").getValue() + ".", Toast.LENGTH_SHORT).show();
+                                            menuInt.putExtra("username",user);
+                                            menuInt.putExtra("sessionnum",String.valueOf(i));
+                                            startActivity(menuInt);
+                                            finish();
+                                            try {
+                                                deactivatePage.finish();
+                                            } catch (Exception e) {
+
+                                            }
+                                        } else {
+                                            startActivity(deactInt);
+                                            finish();
+
+                                        }
                                         return;
                                     }
+
                                 }
                                 statusCreds.setText("Invalid Username or Password.");
                             }

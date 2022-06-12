@@ -162,6 +162,7 @@ public class loginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent registerInt = new Intent(loginActivity.this,signupActivity.class);
                 startActivity(registerInt);
+                return;
             }
 
 

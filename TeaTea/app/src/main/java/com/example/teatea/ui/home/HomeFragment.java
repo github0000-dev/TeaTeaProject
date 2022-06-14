@@ -107,7 +107,7 @@ public class HomeFragment extends Fragment {
                         addcart_intent.putExtra("productid",items.get(position).getId());
                         addcart_intent.putExtra("custid",cust.id);
                         addcart_intent.putExtra("prodname",items.get(position).getProdName());
-                        addcart_intent.putExtra("shopname",items.get(position).shop_from);
+                        addcart_intent.putExtra("shopid",items.get(position).shop_id);
 //                        Log.d("Position",String.valueOf(position));
 //                        Log.d("Item ID",items.get(position).getId());
                         Log.d("Product Name",items.get(position).getProdName());

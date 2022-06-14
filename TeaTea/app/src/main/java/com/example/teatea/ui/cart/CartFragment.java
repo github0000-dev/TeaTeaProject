@@ -67,7 +67,6 @@ public class CartFragment extends Fragment {
 //
 //        listView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
 
 //      public Cart(int prod_id,int quantity,String teasize,double price,double totalprice,String name){
 //        this.prod_id = prod_id;
@@ -78,6 +77,8 @@ public class CartFragment extends Fragment {
 //        this.name = name;
 //    }
 
+
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -93,8 +94,8 @@ public class CartFragment extends Fragment {
                         int quantity  = Integer.parseInt(String.valueOf(snapshot.child("Cart").child(cust.id).child(String.valueOf(i)).child("quantity").getValue()));
                         double price  = Double.parseDouble(String.valueOf(snapshot.child("Cart").child(cust.id).child(String.valueOf(i)).child("price").getValue()));
                         double totalprice = Double.parseDouble(String.valueOf(snapshot.child("Cart").child(cust.id).child(String.valueOf(i)).child("totalprice").getValue()));
-                        String shop = String.valueOf(snapshot.child("Shops").child(String.valueOf(snapshot.child("Products").child(String.valueOf(i)).child("shop_id").getValue())).child("shop_name").getValue());
-                        items.add(new Cart(i,quantity,size,price,totalprice,name,shop));
+                        String shop_id = String.valueOf(snapshot.child("Shops").child(String.valueOf(snapshot.child("Products").child(String.valueOf(i)).child("shop_id").getValue())).child("shop_name").getKey());
+                        items.add(new Cart(i,quantity,size,price,totalprice,name,shop_id));
                     }
                 }
                 CartAdapter.RecycleViewDeleteListener listener = new CartAdapter.RecycleViewDeleteListener() {
@@ -136,8 +137,13 @@ public class CartFragment extends Fragment {
         checkoutbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent_checkout = new Intent (getActivity(),CheckoutActivity.class);
-                startActivity(intent_checkout);
+                if (items.size() == 0) {
+                    Toast.makeText(getActivity(),"Cannot Check out if its empty.",Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent_checkout = new Intent (getActivity(),CheckoutActivity.class);
+                    intent_checkout.putExtra("custid_checkout",cust.id);
+                    startActivity(intent_checkout);
+                }
             }
         });
 

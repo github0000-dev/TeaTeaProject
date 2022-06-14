@@ -1,18 +1,27 @@
 package com.example.teatea.ui.history.ontheway;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.teatea.Cart;
+import com.example.teatea.Customer;
+import com.example.teatea.MainMenu;
 import com.example.teatea.MilkteaItem;
 import com.example.teatea.R;
 import com.example.teatea.ui.cart.CartAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,16 +65,46 @@ public class OnTheWayFragment extends Fragment {
 
         List<Cart> items = new ArrayList<>();
 
-        items.clear();
-        items.add(new Cart("Plain","M",2,140.00));
-        items.add(new Cart("Soft Gellatio","M",1,70.00));
-        items.add(new Cart("Chocolat","S",1,65.00));
-        items.add(new Cart("Wacko Mole","L",3,225.00));
 
-        CartAdapter adapter = new CartAdapter(items);
-        listView.setAdapter(adapter);
+        MainMenu main = (MainMenu) getActivity();
+        Customer cust = main.getCustomer();
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
 
-        listView.setLayoutManager(new LinearLayoutManager(getContext()));
+        db.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                DataSnapshot snap = snapshot.child("Orders");
+                for (int i=0;i<snapshot.child("Orders").getChildrenCount()+1;i++) {
+                    DataSnapshot snapCust = snap.child(String.valueOf(i)).child("cust_id");
+                    DataSnapshot snapStatus = snap.child(String.valueOf(i)).child("status");
+                    if (String.valueOf(snapCust.getValue()).equals(cust.id) &&
+                            String.valueOf(snapStatus.getValue()).equals("ontheway")) {
+                        Log.d("Count",String.valueOf(i));
+                        Log.d("Count of Children",String.valueOf(snap.child(String.valueOf(i)).getChildrenCount()));
+                        for (int a=0;a<snap.child(String.valueOf(i)).getChildrenCount()-3;a++) {
+                            if (snap.child(String.valueOf(a)).hasChildren()) {
+                                String name = String.valueOf(snap.child(String.valueOf(i)).child(String.valueOf(a)).child("name").getValue());
+                                String size = String.valueOf(snap.child(String.valueOf(i)).child(String.valueOf(a)).child("teasize").getValue());
+                                int quantity  = Integer.parseInt(String.valueOf(snap.child(String.valueOf(i)).child(String.valueOf(a)).child("quantity").getValue()));
+                                double price  = Double.parseDouble(String.valueOf(snap.child(String.valueOf(i)).child(String.valueOf(a)).child("price").getValue()));
+                                double totalprice = Double.parseDouble(String.valueOf(snap.child(String.valueOf(i)).child(String.valueOf(a)).child("totalprice").getValue()));
+                                String shop_id = String.valueOf(snapshot.child("Shops").child(String.valueOf(snapshot.child("Products").child(String.valueOf(i)).child("shop_id").getValue())).child("shopname").getValue());
+                                items.add(new Cart(i,quantity,size,price,totalprice,name,shop_id));
+                            }
+                        }
+                    }
+
+                }
+                CartAdapter adapter = new CartAdapter(items);
+                listView.setAdapter(adapter);
+                listView.setLayoutManager(new LinearLayoutManager(getContext()));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
 

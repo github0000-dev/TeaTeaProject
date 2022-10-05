@@ -12,18 +12,21 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.teatea.emailSender.GMailSender;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.zip.Deflater;
 
+import static com.example.teatea.MainMenu.menu_act;
 import static com.example.teatea.loginActivity.login_activity;
 import static com.example.teatea.signupActivity.signupActivity;
 
@@ -36,6 +39,8 @@ public class verifActivity extends AppCompatActivity {
     private SmsManager smsManager = SmsManager.getDefault();
 
 
+
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +49,16 @@ public class verifActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_verif);
 
+
         code = codeSendFunction();
 
         Button submitBtn = findViewById(R.id.submitBtn);
         TextView warningCode = findViewById(R.id.warningCode);
         TextView resendCode = findViewById(R.id.resendCode);
         EditText codeField = findViewById(R.id.codeField);
+        TextView emailVerif = findViewById(R.id.emailShowVerifText);
+
+        emailVerif.setText("The Code has been sent to "+si.email+ ".\nPlease Enter the Verification code to proceed Finishing Registration.");
 
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +76,8 @@ public class verifActivity extends AppCompatActivity {
                     Intent finish_signup = new Intent(verifActivity.this,loginActivity.class);
                     startActivity(finish_signup);
                     finish();
+                    finishAffinity();
+                    return;
                 } else {
                     warningCode.setText("Invalid Code. Try Again...");
                     new Handler().postDelayed(new Runnable() {
@@ -85,23 +96,58 @@ public class verifActivity extends AppCompatActivity {
     public int codeSendFunction() {
         int code = ThreadLocalRandom.current().nextInt(1000, 9999);
 
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.cancel(0);
+//        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+//        notificationManager.cancel(0);
+//
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                NotificationCompat.Builder mBuilder =  new NotificationCompat.Builder(verifActivity.this)
+//                        .setSmallIcon(R.drawable.ic_baseline_mail_outline_24)
+//                        .setContentTitle("Verification Code")
+//                        .setContentText("The Code is " + String.valueOf(code));
+//                notificationManager.notify(0,mBuilder.build());
+//            }
+//        },1500);
+//
+//        smsManager.sendTextMessage(si.contact,null,"The code is "+ String.valueOf(code) +".",null,null);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                NotificationCompat.Builder mBuilder =  new NotificationCompat.Builder(verifActivity.this)
-                        .setSmallIcon(R.drawable.ic_baseline_mail_outline_24)
-                        .setContentTitle("Verification Code")
-                        .setContentText("The Code is " + String.valueOf(code));
-                notificationManager.notify(0,mBuilder.build());
-            }
-        },1500);
 
-        smsManager.sendTextMessage(si.contact,null,"The code is "+ String.valueOf(code) +".",null,null);
+        sendEmail("mejaresdominic@google.com",
+                "iancoolenough1",
+                si.email,
+                "TeaTea Verification",
+                "The Code is "+code+".");
 
         return code;
+    }
+
+
+    private void sendEmail(final String Sender,final String Password,final String Receiver,final String Title,final String Message)
+    {
+
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    GMailSender sender = new GMailSender(Sender,Password);
+                    sender.sendMail(Title, "<b>"+Message+"</b>", Sender, Receiver);
+                    makeAlert(Receiver);
+
+                } catch (Exception e) {
+                    Log.e("SendMail", e.getMessage(), e);
+                }
+            }
+
+        }).start();
+    }
+    private void makeAlert(String email){
+        this.runOnUiThread(new Runnable() {
+            public void run() {
+                System.out.println("Mail Sent to "+email+".");
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

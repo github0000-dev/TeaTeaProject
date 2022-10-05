@@ -19,8 +19,7 @@ import com.example.teatea.R;
 import com.example.teatea.ui.history.finished.FinishedFragment;
 import com.example.teatea.ui.history.ontheway.OnTheWayFragment;
 import com.example.teatea.ui.history.pending.PendingFragment;
-import com.example.teatea.ui.history.readytodeliver.ReadyToDeliverFragment;
-import com.google.android.material.tabs.TabLayout;
+import com.example.teatea.ui.history.onmaking.OnMakingFragment;
 
 public class HistoryFragment extends Fragment {
 
@@ -53,7 +52,7 @@ public class HistoryFragment extends Fragment {
 
     private class myPagerAdapter extends FragmentPagerAdapter {
 
-        private String[] titles = {"Pending","Ready to Deliver","On the Way","Finished"};
+        private String[] titles = {"Pending","On Making","On the Way","Finished"};
 
         public myPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
@@ -65,7 +64,7 @@ public class HistoryFragment extends Fragment {
                 case 0:
                     return PendingFragment.newInstance();
                 case 1:
-                    return ReadyToDeliverFragment.newInstance();
+                    return OnMakingFragment.newInstance();
                 case 2:
                     return OnTheWayFragment.newInstance();
                 case 3:

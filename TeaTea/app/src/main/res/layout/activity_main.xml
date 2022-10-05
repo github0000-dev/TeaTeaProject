@@ -28,7 +28,7 @@
         android:layout_height="37dp"
         android:fontFamily="cursive"
         android:gravity="center"
-        android:text="better tea for better life"
+        android:text="Your Friendly Milk Tea App"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

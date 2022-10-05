@@ -15,10 +15,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TeaTeaShops">
+<<<<<<< HEAD
         <activity android:name=".ui.products.EditProductActivity"
         android:launchMode="singleInstance"
         android:parentActivityName=".MainMenu" ></activity>
         <activity android:name=".DeactivatedPage" />
+=======
+        <activity android:name=".DeactivatedPage"
+            android:launchMode="singleTask"></activity>
+>>>>>>> master
         <activity
             android:name=".ui.products.ProductActivity"
             android:launchMode="singleInstance"
@@ -50,6 +55,7 @@
         <activity
             android:name=".MainMenu"
             android:label="@string/title_activity_main_menu"
+            android:launchMode="singleTask"
             android:theme="@style/Theme.TeaTeaShops.NoActionBar" />
         <activity
             android:name=".signupActivity"

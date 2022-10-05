@@ -120,7 +120,8 @@ public class StaffFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         startActivity(logout_sess);
-                        main_menu_act.finish();
+//                        main_menu_act.finish();
+                        getActivity().finishAffinity();
                     }
                 });
                 builder.create();

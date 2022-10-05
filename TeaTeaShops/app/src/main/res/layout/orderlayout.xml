@@ -3,9 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/browser_actions_bg_grey">
 
     <LinearLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -21,15 +23,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
-                android:id="@+id/milk_order_num"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="13dp"
-                android:text="Order ID: 0" />
+
+<!--            <TextView-->
+<!--                android:id="@+id/milk_order_num"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="13dp"-->
+<!--                android:text="Order ID: 0" />-->
 
             <TextView
-                android:id="@+id/milk_name1"
+                android:id="@+id/milktea_order_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="19dp"
@@ -44,10 +47,20 @@
                     android:layout_height="wrap_content"
                     android:text="Size: " />
                 <TextView
-                    android:id="@+id/milk_size"
+                    android:id="@+id/milktea_order_size"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="S" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" - " />
+                <TextView
+                    android:id="@+id/milktea_order_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"/>
             </LinearLayout>
 
             <LinearLayout
@@ -59,11 +72,12 @@
                     android:layout_height="wrap_content"
                     android:text="Quantity: " />
                 <TextView
-                    android:id="@+id/milk_quantity"
+                    android:id="@+id/milktea_order_quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1" />
             </LinearLayout>
+
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -71,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="160dp">
                 <TextView
-                    android:id="@+id/milk_price"
+                    android:id="@+id/milktea_order_totalprice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="65.00" />
@@ -82,6 +96,18 @@
             </LinearLayout>
 
         </LinearLayout>
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical">-->
+<!--            <Button-->
+<!--                android:layout_marginTop="60px"-->
+<!--                android:text="Confirm"-->
+<!--                android:textSize="20px"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="100px"/>-->
+<!--        </LinearLayout>-->
+
     </LinearLayout>
 
     <LinearLayout

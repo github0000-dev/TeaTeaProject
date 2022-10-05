@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.teateashops.R;
+import com.example.teateashops.ui.orders.onmaking.OnMakingFragment;
 import com.example.teateashops.ui.orders.pending.PendingFragment;
 import com.example.teateashops.ui.orders.readytodeliver.ReadyToDeliverFragment;
 
@@ -43,12 +44,11 @@ public class OrdersFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(OrdersViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     private class myPagerAdapter extends FragmentPagerAdapter {
 
-        private String[] titles = {"Pending","Done Prepared"};
+        private String[] titles = {"Pending","On Making","Done Prepared"};
 
         public myPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
@@ -60,6 +60,8 @@ public class OrdersFragment extends Fragment {
                 case 0:
                     return PendingFragment.newInstance();
                 case 1:
+                    return OnMakingFragment.newInstance();
+                case 2:
                     return ReadyToDeliverFragment.newInstance();
                 default:
                     return PendingFragment.newInstance();
@@ -73,7 +75,7 @@ public class OrdersFragment extends Fragment {
 
         @Override
         public int getCount() {
-            return 2;
+            return titles.length;
         }
     }
 

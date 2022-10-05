@@ -2,6 +2,7 @@ package com.example.teateashops;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.Button;
 
 public class DeactivatedPage extends AppCompatActivity {
 
+    public static Activity deactivatePage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +22,13 @@ public class DeactivatedPage extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_deactivated_page);
 
+<<<<<<< HEAD
         Button logout_btn =  findViewById(R.id.logOutBtn_deactivated);
+=======
+        deactivatePage = DeactivatedPage.this;
+
+        Button logout_btn = findViewById(R.id.logOutDeactivatePage);
+>>>>>>> master
 
         logout_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,6 +36,7 @@ public class DeactivatedPage extends AppCompatActivity {
                 Intent activity_logout = new Intent(DeactivatedPage.this,loginActivity.class);
                 startActivity(activity_logout);
                 finish();
+                finishAffinity();
             }
         });
 

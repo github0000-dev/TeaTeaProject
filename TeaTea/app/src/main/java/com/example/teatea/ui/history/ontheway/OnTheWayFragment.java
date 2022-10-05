@@ -73,6 +73,7 @@ public class OnTheWayFragment extends Fragment {
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                items.clear();
                 DataSnapshot snap = snapshot.child("Orders");
                 for (int i=0;i<snapshot.child("Orders").getChildrenCount()+1;i++) {
                     DataSnapshot snapCust = snap.child(String.valueOf(i)).child("cust_id");

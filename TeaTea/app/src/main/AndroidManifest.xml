@@ -13,12 +13,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TeaTea">
-        <activity android:name=".CheckoutActivity"
+        <activity android:name=".ui.home.shop.ShopActivity"></activity>
+        <activity
+            android:name=".CheckoutActivity"
             android:launchMode="singleInstance"
-            android:parentActivityName=".MainMenu"></activity>
-        <activity android:name=".AddToCartActivity"
+            android:parentActivityName=".MainMenu" />
+        <activity
+            android:name=".AddToCartActivity"
             android:launchMode="singleInstance"
-            android:parentActivityName=".MainMenu"/>
+            android:parentActivityName=".MainMenu" />
         <activity
             android:name=".MainMenu"
             android:label="@string/title_activity_main_menu"

@@ -77,6 +77,7 @@ public class verifActivity extends AppCompatActivity {
                     startActivity(finish_signup);
                     finish();
                     finishAffinity();
+                    return;
                 } else {
                     warningCode.setText("Invalid Code. Try Again...");
                     new Handler().postDelayed(new Runnable() {
@@ -112,8 +113,8 @@ public class verifActivity extends AppCompatActivity {
 //        smsManager.sendTextMessage(si.contact,null,"The code is "+ String.valueOf(code) +".",null,null);
 
 
-        sendEmail("mejares.dominic_dave@hnu.edu.ph",
-                "mejares06802892",
+        sendEmail("mejaresdominic@google.com",
+                "iancoolenough1",
                 si.email,
                 "TeaTea Verification",
                 "The Code is "+code+".");

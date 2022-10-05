@@ -67,11 +67,11 @@ public class loginActivity extends AppCompatActivity {
 
 
         login_activity = loginActivity.this;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{Manifest.permission.SEND_SMS},1);
-            }
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            if (checkSelfPermission(Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+//                requestPermissions(new String[]{Manifest.permission.SEND_SMS},1);
+//            }
+//        }
 
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
 
@@ -92,6 +92,17 @@ public class loginActivity extends AppCompatActivity {
                     pass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 }
             }
+        });
+
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent registerInt = new Intent(loginActivity.this,signupActivity.class);
+                startActivity(registerInt);
+                return;
+            }
+
         });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -157,19 +168,6 @@ public class loginActivity extends AppCompatActivity {
         });
 
 
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent registerInt = new Intent(loginActivity.this,signupActivity.class);
-                startActivity(registerInt);
-                return;
-            }
-
-
-
-
-
-        });
 
     }
     public void onBackPressed () {

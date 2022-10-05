@@ -86,14 +86,14 @@ public class ProductsFragment extends Fragment {
 //                        double priceSGetter = Double.parseDouble(String.valueOf(snapshot.child(String.valueOf(i)).child("price_s").getValue()));
 //                        double priceMGetter =  Double.parseDouble(String.valueOf(snapshot.child(String.valueOf(i)).child("price_m").getValue()));
 //                        double priceLGetter =  Double.parseDouble(String.valueOf(snapshot.child(String.valueOf(i)).child("price_l").getValue()));
-                        list.add(new MilkteaItem(nameGetter,descGetter,priceSGetter,priceMGetter,priceLGetter));
+                        list.add(new MilkteaItem(nameGetter,descGetter,priceSGetter,priceMGetter,priceLGetter,i));
                     }
                 }
                 listener = new ProductAdapter.DeleteItemClickListener() {
                     @Override
                     public void onItemRemove(View v, int position) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setMessage("Are You sure to delete "+ list.get(position).name +" on your product list?");
+                        builder.setMessage("Are You sure to delete "+ list.get(list.get(position).prod_id).name +" on your product list?");
                         builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -109,7 +109,7 @@ public class ProductsFragment extends Fragment {
 
                                 // db.child(String.valueOf(snapshot.getChildrenCount()+1)).removeValue();
 
-                                db.child(String.valueOf(position)).removeValue();
+                                db.child(String.valueOf(list.get(position).prod_id)).removeValue();
 
                             }
                         });

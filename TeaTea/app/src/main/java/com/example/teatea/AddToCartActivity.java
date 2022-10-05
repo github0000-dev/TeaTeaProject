@@ -23,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.FileReader;
+import java.util.ArrayList;
 
 public class AddToCartActivity extends AppCompatActivity {
 
@@ -140,6 +141,8 @@ public class AddToCartActivity extends AppCompatActivity {
                 prodprice.setText("S - "+priceSGetter+" PHP\nM - "+priceMGetter+" PHP\nL - "+priceLGetter+" PHP");
 
 
+
+
                 // quantity = Integer.parseInt(spinner_quantity.getSelectedItem().toString());
                 Log.d("Quantity",String.valueOf(quantity[0]));
 
@@ -182,10 +185,16 @@ public class AddToCartActivity extends AppCompatActivity {
                     }
                 });
 
+                int max = 1000;
+                String[] quantityMax = new String[max];
+                for (int i=0;i<max;i++) {
+                    quantityMax[i] = String.valueOf(i+1);
+                }
+
 
                 Spinner spinner_quantity = findViewById(R.id.spinner_quantity_addtocart);
-                ArrayAdapter<CharSequence> adapter_quantity = ArrayAdapter.createFromResource(AddToCartActivity.this,
-                        R.array.quantity_cart, android.R.layout.simple_spinner_item);
+                ArrayAdapter<String> adapter_quantity = new ArrayAdapter<String>(AddToCartActivity.this,
+                        android.R.layout.simple_spinner_item,quantityMax);
                 adapter_quantity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner_quantity.setAdapter(adapter_quantity);
                 spinner_quantity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

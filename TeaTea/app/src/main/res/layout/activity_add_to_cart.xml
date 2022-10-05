@@ -173,8 +173,9 @@
 
 
     <LinearLayout
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:layout_weight="1"
         android:orientation="horizontal"
         android:layout_margin="10dp">
         <LinearLayout
@@ -292,7 +293,8 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
             android:layout_width="match_parent">
 
             <ImageView
@@ -453,7 +455,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="83dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
         android:orientation="vertical"></LinearLayout>
     <LinearLayout
         android:orientation="vertical"
@@ -480,8 +483,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="fill_parent"
         android:orientation="vertical"
+        android:layout_weight="1.17"
         android:background="@color/purple_200">
 
         <Button
